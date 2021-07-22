@@ -11,3 +11,5 @@ else:
     print('Szeebe is unable to run.\n' + ('-' * 23))
     quit()
 
+import discord
+
