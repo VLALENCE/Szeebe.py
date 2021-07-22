@@ -3,11 +3,9 @@ print(('-' * 23) + '\nTest build of Szeebe.py\nCreated by: Scrippy\nStarted Jul.
 is_Active = True
 
 if is_Active:
-    print('Szeebe is able to run.')
-    print('-' * 23)
+    print('Szeebe is able to run.\n' + ('-' * 23))
 else:
-    print('Szeebe is unable to run.')
-    print('-' * 23)
+    print('Szeebe is unable to run.\n' + ('-' * 23))
     quit()
 
 
