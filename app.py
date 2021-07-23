@@ -11,5 +11,12 @@ else:
     print('Szeebe is unable to run.\n' + ('-' * 23))
     quit()
 
-import discord
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+TOKEN = os.getenv('TOKEN')
+PREFIX = os.getenv('PREFIX')
+
+print(PREFIX)
