@@ -19,6 +19,8 @@ load_dotenv()
 TOKEN = os.getenv('TOKEN')
 PREFIX = os.getenv('PREFIX')
 
+from datetime import datetime
+
 import discord
 
 class MyClient(discord.Client):
@@ -41,7 +43,18 @@ class MyClient(discord.Client):
 
             if message.content.lower() == 'general kenobi':
                 await message.channel.send('You are a bold one')
+                return
 
+            if message.content.lower() == 'test':
+                await message.channel.send(message.created_at)
+                return
+
+            if message.content.lower() == PREFIX + 'ping':
+                embed = discord.Embed(description='Pong! Response Time: '+str(round(client.latency, 3)) + ' Seconds!', color=0x00ff5f, timestamp=datetime.utcnow())
+                embed.set_author(name=self.user.name+' ⋅ Ping', icon_url=self.user.avatar_url)
+                embed.set_footer(text=message.guild.name, icon_url=message.guild.icon_url)
+                await message.channel.send(embed=embed)
+                return
 
 client = MyClient()
 client.run(TOKEN)
