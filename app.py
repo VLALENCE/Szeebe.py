@@ -21,6 +21,10 @@ PREFIX = os.getenv('PREFIX')
 
 from datetime import datetime
 
+import time
+
+start_time = time.time()
+
 import discord
 
 class MyClient(discord.Client):
@@ -50,8 +54,22 @@ class MyClient(discord.Client):
                 return
 
             if message.content.lower() == PREFIX + 'ping':
-                embed = discord.Embed(description='Pong! Response Time: '+str(round(client.latency, 3)) + ' Seconds!', color=0x00ff5f, timestamp=datetime.utcnow())
+                embed = discord.Embed(description='Pong! Response Time:\n'+str(round(client.latency, 3)) + ' Seconds (' + str(round(client.latency*1000)) + 'ms)!', color=0x00ff5f, timestamp=datetime.utcnow())
                 embed.set_author(name=self.user.name+' ⋅ Ping', icon_url=self.user.avatar_url)
+                embed.set_footer(text=message.guild.name, icon_url=message.guild.icon_url)
+                await message.channel.send(embed=embed)
+                return
+
+            if message.content.lower() == PREFIX + 'uptime':
+                current_uptime = time.time()
+                elapsed = current_uptime - start_time
+                print(elapsed)
+                days = str(round(elapsed / 86400))
+                hours = str(round((elapsed / 3600) % 24))
+                minutes = str(round((elapsed / 60) % 60))
+                seconds = str(round((elapsed / 1) % 60))
+                embed = discord.Embed(description=days+' days, '+hours+' hours, '+minutes+' minutes, '+seconds+' seconds.', color=0x00ff5f, timestamp=datetime.utcnow())
+                embed.set_author(name=self.user.name + ' ⋅ Uptime', icon_url=self.user.avatar_url)
                 embed.set_footer(text=message.guild.name, icon_url=message.guild.icon_url)
                 await message.channel.send(embed=embed)
                 return
