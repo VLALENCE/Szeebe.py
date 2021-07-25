@@ -19,8 +19,9 @@ load_dotenv()
 TOKEN = os.getenv('TOKEN')
 PREFIX = os.getenv('PREFIX')
 
-from datetime import datetime
+import math
 
+from datetime import datetime
 import time
 
 start_time = time.time()
