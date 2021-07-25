@@ -8,16 +8,13 @@ import os
 
 # .env Handling
 from dotenv import load_dotenv
-
 load_dotenv()
 
 # // Variables
-
 PREFIX = os.getenv('PREFIX')
 TOKEN = os.getenv('TOKEN')
 
 # // Module Functions
-
 def prefix():
         return PREFIX
 
