@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TOKEN = os.getenv('TOKEN')
 PREFIX = os.getenv('PREFIX')
+TOKEN = os.getenv('TOKEN')
 
 def prefix():
         return PREFIX
