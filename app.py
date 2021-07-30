@@ -57,3 +57,32 @@
 #           userinfo.py
 #           uptime.py
 # README.md
+
+# // Libaries
+import discord
+import tracemalloc
+
+# // Modules
+from lib.bot import env_variables,bot_action
+
+# // Variables
+TOKEN = env_variables.token()
+PREFIX = env_variables.prefix()
+
+# // Events
+class myClient(discord.Client):
+    async def on_ready(self):
+        bot_action.do.createClientReadyResponse(self)
+
+    async def on_message(self, message):
+        if bot_action.check.isAuthorSelf(self, message): return
+
+        if bot_action.check.isTriggerWord(message):
+            await bot_action.do.createTriggerWordResponse(message)
+            return
+
+
+# // Startup
+tracemalloc.start()
+client = myClient()
+client.run(TOKEN)
