@@ -1,7 +1,14 @@
+# By ScriptIntelligence
+# Started Aug. 14, 2021
+
+# // Libraries
 import discord
+import io
+import aiohttp
 
+# // Variables
 
-
+# // Functions
 def createTriggerWordResponse(message):
     if message.content.lower() == 'hi': return message.channel.send('Hello there')
     if message.content.lower() == 'hello there': return message.channel.send('General Kenobi')
