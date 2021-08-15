@@ -63,7 +63,7 @@ import discord
 import tracemalloc
 
 # // Modules
-from lib.bot import env_variables,bot_action
+from lib.bot import env_variables,bot_check,bot_do
 
 # // Variables
 TOKEN = env_variables.token()
@@ -72,13 +72,13 @@ PREFIX = env_variables.prefix()
 # // Events
 class myClient(discord.Client):
     async def on_ready(self):
-        bot_action.do.createClientReadyResponse(self)
+        bot_do.createClientReadyResponse(self)
 
     async def on_message(self, message):
-        if bot_action.check.isAuthorSelf(self, message): return
+        if bot_check.isAuthorSelf(self, message): return
 
-        if bot_action.check.isTriggerWord(message):
-            await bot_action.do.createTriggerWordResponse(message)
+        if bot_check.isTriggerWord(message):
+            await bot_do.createTriggerWordResponse(message)
             return
 
 
