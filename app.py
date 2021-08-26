@@ -77,10 +77,10 @@ class myClient(discord.Client):
     async def on_message(self, message):
         if bot_check.isAuthorSelf(self, message): return
 
-        if bot_check.isTriggerWord(message):
-            await bot_do.createTriggerWordResponse(message)
-            return
-
+        #if bot_check.isTriggerWord(message):
+            #await bot_do.createTriggerWordResponse(message)
+            #return
+        if bot_check.isCommand(message): return
 
 # // Startup
 tracemalloc.start()
