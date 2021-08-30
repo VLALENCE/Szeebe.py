@@ -80,7 +80,12 @@ class myClient(discord.Client):
         #if bot_check.isTriggerWord(message):
             #await bot_do.createTriggerWordResponse(message)
             #return
-        if bot_check.isCommand(message): return
+
+        if bot_check.hasPrefix(message):
+            args = bot_do.getCommandArgs(message)
+            print(args)
+            if bot_check.isCommand(args):
+                return
 
 # // Startup
 tracemalloc.start()
