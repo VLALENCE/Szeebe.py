@@ -32,20 +32,18 @@ def isTriggerWord(message):
 def isAuthorSelf(self, message):
     if message.author.id == self.user.id: return True
 
-def isCommand(message):
-    #if not message.content == 'check': return False
-    if message.content.startswith(PREFIX):
-        commandFiles = os.listdir(r"lib\bot\commands")
-        for file in commandFiles:
-            if file.endswith(".py"):
-                print(file)
-                commandFileName = file.split('.py')
-                print(commandFileName[0])
-                commandSplit = message.content.split('>')
-                commandName = commandSplit[1].split(' ')
-                if commandName[0] == commandFileName[0]:
-                    print('isCommand ! ' + commandName[0])
-                    return True
+def isCommand(args):
+    commandFiles = os.listdir(r"lib\bot\commands")
+    for file in commandFiles:
+        if file.endswith(".py"):
+            print(file)
+            commandFileName = file.split('.py')
+            print(commandFileName[0])
+            commandName = args[0]
+            if commandName[0] == commandFileName[0]:
+                print('isCommand ! ' + commandName[0])
+                return True
     return False
 
-
+def hasPrefix(message):
+    if message.content.startswith(PREFIX): return True
