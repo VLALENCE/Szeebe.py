@@ -29,3 +29,7 @@ def createTriggerWordResponse(message):
 def createClientReadyResponse(self):
     return print(('-' * 23) + '\nLogged in as...\n' + self.user.name + '\n' + str(self.user.id) + '\n' + ('-' * 23))
 
+def getCommandArgs(message):
+    commandSplit = message.content.split('>')
+    commandArgs = commandSplit[1].split(' ')
+    return commandArgs
