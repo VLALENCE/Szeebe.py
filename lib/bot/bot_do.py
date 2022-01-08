@@ -15,9 +15,10 @@ def createTriggerWordResponse(message):
     if message.content.lower() == 'general kenobi': return message.channel.send('You are a bold one')
     if message.content.lower().find('birthday') >= 0: return message.channel.send('Happy Birthday!!!')
     if message.content.lower().find('scrizeebe') >= 0: return message.channel.send('Script*')
-    if message.content.lower() == 'boing': return message.channel.send('boing')
+    if message.content.lower().find('boing') >= 0: return message.channel.send('boing')
+    if message.content.lower().find('frog') >= 0: return message.channel.send('boing ribbit boing')
 
-    if message.content.lower() == 'no.': return message.channel.send(files=discord.File('https://github.com/Scrippy/conch.rbx/raw/main/Audio/no.mp3'))
+    #if message.content.lower() == 'no.': return message.channel.send(files=discord.File('https://github.com/Scrippy/conch.rbx/raw/main/Audio/no.mp3'))
     #if message.content.lower() == 'nothing.': return
     #if message.content.lower() == 'try asking again.': return
     #if message.content.lower() == 'i dont think so': return
