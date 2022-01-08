@@ -20,7 +20,8 @@ def isTriggerWord(message):
     if message.content.lower() == 'general kenobi': return True
     if message.content.lower().find('birthday') >= 0: return True
     if message.content.lower().find('scrizeebe') >= 0: return True
-    if message.content.lower() == 'boing': return True
+    if message.content.lower().find('boing') >= 0: return True
+    if message.content.lower().find('frog') >= 0: return True
     if message.content.lower() == 'no.': return True
     if message.content.lower() == 'nothing.': return True
     if message.content.lower() == 'try asking again.': return True
