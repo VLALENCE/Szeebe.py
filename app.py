@@ -72,7 +72,8 @@ PREFIX = env_variables.prefix()
 # // Events
 class myClient(discord.Client):
     async def on_ready(self):
-        bot_do.createClientReadyResponse(self)
+        bot_do.createClientReadyResponse(self) 
+        return
 
     async def on_message(self, message):
         if bot_check.isAuthorSelf(self, message): return
