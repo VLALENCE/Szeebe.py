@@ -2,13 +2,39 @@
 # Started Aug. 14, 2021
 
 # // Libraries
+import asyncio
 import discord
 import io
 import aiohttp
+from discord import activity
+from asyncio import sleep
+from lib.bot.env_variables import prefix
+
 
 # // Variables
 
 # // Functions
+#async def my_background_task(self):
+    #while not discord.is_closed:
+        #activity = discord.Activity(type=self.ActivityType.listening, name=prefix+'help | '+len(list(self.guilds)))
+        #self.change_presence(status=self.Status.online, activity=activity)
+        #asyncio.sleep(10)
+        #activityagain = self.Activity(type=self.ActivityType.listening, name=prefix+'help | '+ len(list(self.users)))
+        #self.change_presence(status=self.Status.online, activity=activityagain)
+        #asyncio.sleep(10)
+
+async def status_task(self):
+    while True:
+        activity = discord.Activity(type=discord.ActivityType.listening, name=('s>help | '+ str(len(list(self.guilds)))+' servers!'))
+        await self.change_presence(status=discord.Status.online, activity=activity)
+        await asyncio.sleep(10)
+        activity = discord.Activity(type=discord.ActivityType.listening, name=('s>help | [Broken] '+ str(len(list(self.users)))+' users!'))
+        await self.change_presence(status=discord.Status.online, activity=activity)
+        await asyncio.sleep(10)
+        activity = discord.Activity(type=discord.ActivityType.listening, name=('s>help | Running in Python! [Demo]'))
+        await self.change_presence(status=discord.Status.online, activity=activity)
+        await asyncio.sleep(10)
+
 def createTriggerWordResponse(message):
     if message.content.lower() == 'hi': return message.channel.send('Hello there')
     if message.content.lower() == 'hello there': return message.channel.send('General Kenobi')
@@ -28,7 +54,10 @@ def createTriggerWordResponse(message):
 
 
 def createClientReadyResponse(self):
-    return print(('-' * 23) + '\nLogged in as...\n' + self.user.name + '\n' + str(self.user.id) + '\n' + ('-' * 23))
+    print(('-' * 23) + '\nLogged in as...\n' + self.user.name + '\n' + str(self.user.id) + '\n' + ('-' * 23))
+    #self.loop.create_task(my_background_task(self))
+    self.loop.create_task(status_task(self))
+    return
 
 def getCommandArgs(message):
     commandSplit = message.content.split('>')
