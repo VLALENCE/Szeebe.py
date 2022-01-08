@@ -6,6 +6,8 @@ import asyncio
 import discord
 import io
 import aiohttp
+import os
+
 from discord import activity
 from asyncio import sleep
 from lib.bot.env_variables import prefix
@@ -52,6 +54,22 @@ def createTriggerWordResponse(message):
     #if message.content.lower() == 'maybe some day.': return
     #if message.content.lower() == 'yes.': return
 
+
+def createTriggerWordResponseNew(message):
+    normalResponseFiles = os.listdir(r"lib\bot\responses\normal")
+    for file in normalResponseFiles:
+        if file.endswith('.py'):
+            responseFileName = file.split('.py')
+            if message.content.lower() == responseFileName[0]:
+                return message.channel.send(responseFileName[0])
+
+    wildcardResponseFiles = os.listdir(r"lib\bot\responses\wildcard")
+    for file in wildcardResponseFiles:
+        if file.endswith('.py'):
+            responseFileName = file.split('.py')
+            if message.content.lower().find(responseFileName[0]) >= 0: 
+                return message.channel.send(responseFileName[0])
+    return
 
 def createClientReadyResponse(self):
     print(('-' * 23) + '\nLogged in as...\n' + self.user.name + '\n' + str(self.user.id) + '\n' + ('-' * 23))
