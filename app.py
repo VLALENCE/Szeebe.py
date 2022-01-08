@@ -78,8 +78,12 @@ class myClient(discord.Client):
     async def on_message(self, message):
         if bot_check.isAuthorSelf(self, message): return
 
-        if bot_check.isTriggerWord(message):
-            await bot_do.createTriggerWordResponse(message)
+        #if bot_check.isTriggerWord(message):
+        #    await bot_do.createTriggerWordResponse(message)
+        #    return
+
+        if bot_check.isTriggerWordNew(message):
+            await bot_do.createTriggerWordResponseNew(message)
             return
 
         if bot_check.hasPrefix(message):
