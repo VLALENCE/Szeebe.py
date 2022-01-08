@@ -6,6 +6,7 @@ import discord
 import io
 import aiohttp
 import os
+import runpy
 
 # // Modules
 from lib.bot import env_variables
@@ -30,13 +31,29 @@ def isTriggerWord(message):
     if message.content.lower() == 'maybe some day.': return True
     if message.content.lower() == 'yes.': return True
 
+# Work In Progress
+def isTriggerWordNew(message):
+    normalResponseFiles = os.listdir(r"lib\bot\responses\normal")
+    for file in normalResponseFiles:
+        if file.endswith('.py'):
+            responseFileName = file.split('.py')
+            if message.content.lower() == responseFileName[0]: return True
+    wildcardResponseFiles = os.listdir(r"lib\bot\responses\wildcard")
+    for file in wildcardResponseFiles:
+        if file.endswith('.py'):
+            responseFileName = file.split('.py')
+            if message.content.lower().find(responseFileName[0]) >= 0: return True
+    return False
+            
+
+
 def isAuthorSelf(self, message):
     if message.author.id == self.user.id: return True
 
 def isCommand(args):
     commandFiles = os.listdir(r"lib\bot\commands")
     for file in commandFiles:
-        if file.endswith(".py"):
+        if file.endswith('.py'):
             print(file)
             commandFileName = file.split('.py')
             print(commandFileName[0])
