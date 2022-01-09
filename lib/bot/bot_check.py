@@ -15,24 +15,24 @@ from lib.bot import env_variables
 TOKEN = env_variables.token()
 PREFIX = env_variables.prefix()
 
-def isTriggerWord(message):
-    if message.content.lower() == 'hi': return True
-    if message.content.lower() == 'hello there': return True
-    if message.content.lower() == 'general kenobi': return True
-    if message.content.lower().find('birthday') >= 0: return True
-    if message.content.lower().find('scrizeebe') >= 0: return True
-    if message.content.lower().find('boing') >= 0: return True
-    if message.content.lower().find('frog') >= 0: return True
-    if message.content.lower() == 'no.': return True
-    if message.content.lower() == 'nothing.': return True
-    if message.content.lower() == 'try asking again.': return True
-    if message.content.lower() == 'i dont think so': return True
-    if message.content.lower() == 'i don\' think so': return True
-    if message.content.lower() == 'maybe some day.': return True
-    if message.content.lower() == 'yes.': return True
+#def isTriggerWord(message):
+#    if message.content.lower() == 'hi': return True
+#    if message.content.lower() == 'hello there': return True
+#    if message.content.lower() == 'general kenobi': return True
+#    if message.content.lower().find('birthday') >= 0: return True
+#    if message.content.lower().find('scrizeebe') >= 0: return True
+#    if message.content.lower().find('boing') >= 0: return True
+#    if message.content.lower().find('frog') >= 0: return True
+#    if message.content.lower() == 'no.': return True
+#    if message.content.lower() == 'nothing.': return True
+#    if message.content.lower() == 'try asking again.': return True
+#    if message.content.lower() == 'i dont think so': return True
+#    if message.content.lower() == 'i don\' think so': return True
+#    if message.content.lower() == 'maybe some day.': return True
+#    if message.content.lower() == 'yes.': return True
 
 # Work In Progress
-def isTriggerWordNew(message):
+def isTriggerWord(message):
     normalResponseFiles = os.listdir(r"lib\bot\responses\normal")
     for file in normalResponseFiles:
         if file.endswith('.py'):
